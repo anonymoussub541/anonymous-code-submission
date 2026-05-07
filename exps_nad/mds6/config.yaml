@@ -1,0 +1,4 @@
+project:
+  name: mds6
+  SAVEDIR: /home/project/exps_nad/
+  CODEDIR: /home/project/EvoTreeNAD/

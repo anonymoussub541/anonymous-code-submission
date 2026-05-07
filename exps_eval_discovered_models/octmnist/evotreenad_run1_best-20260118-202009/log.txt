@@ -1,0 +1,250 @@
+2026-01-18 20:20:10,172 param size = 1.625892MB
+2026-01-18 20:20:10,172 Starting training on octmnist for 60 epochs...
+2026-01-18 20:22:18,284  Epoch 1. Training Loss: 0.4809
+2026-01-18 20:22:18,286     Epoch 1/60 | Loss: 0.4809
+2026-01-18 20:22:18,678  ---- New best accuracy achieved! ---- 
+2026-01-18 20:22:18,678      Test Accuracy: 0.8830, AUC: 0.9854
+2026-01-18 20:22:18,678            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:24:29,028  Epoch 2. Training Loss: 0.3640
+2026-01-18 20:24:29,028     Epoch 2/60 | Loss: 0.3640
+2026-01-18 20:24:29,400      Test Accuracy: 0.7950, AUC: 0.9856
+2026-01-18 20:24:29,400            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:26:40,046  Epoch 3. Training Loss: 0.3447
+2026-01-18 20:26:40,047     Epoch 3/60 | Loss: 0.3447
+2026-01-18 20:26:40,411      Test Accuracy: 0.6620, AUC: 0.9809
+2026-01-18 20:26:40,412            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:28:48,476  Epoch 4. Training Loss: 0.3378
+2026-01-18 20:28:48,477     Epoch 4/60 | Loss: 0.3378
+2026-01-18 20:28:48,844      Test Accuracy: 0.7720, AUC: 0.9858
+2026-01-18 20:28:48,844            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:30:57,341  Epoch 5. Training Loss: 0.3403
+2026-01-18 20:30:57,341     Epoch 5/60 | Loss: 0.3403
+2026-01-18 20:30:57,715      Test Accuracy: 0.8460, AUC: 0.9908
+2026-01-18 20:30:57,716            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:33:05,778  Epoch 6. Training Loss: 0.3183
+2026-01-18 20:33:05,778     Epoch 6/60 | Loss: 0.3183
+2026-01-18 20:33:06,146      Test Accuracy: 0.8710, AUC: 0.9910
+2026-01-18 20:33:06,147            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:35:15,685  Epoch 7. Training Loss: 0.3256
+2026-01-18 20:35:15,685     Epoch 7/60 | Loss: 0.3256
+2026-01-18 20:35:16,055      Test Accuracy: 0.8650, AUC: 0.9875
+2026-01-18 20:35:16,055            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:37:25,387  Epoch 8. Training Loss: 0.3057
+2026-01-18 20:37:25,388     Epoch 8/60 | Loss: 0.3057
+2026-01-18 20:37:25,753      Test Accuracy: 0.8230, AUC: 0.9859
+2026-01-18 20:37:25,753            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:39:35,499  Epoch 9. Training Loss: 0.3028
+2026-01-18 20:39:35,499     Epoch 9/60 | Loss: 0.3028
+2026-01-18 20:39:35,873      Test Accuracy: 0.8620, AUC: 0.9934
+2026-01-18 20:39:35,873            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:41:45,070  Epoch 10. Training Loss: 0.3156
+2026-01-18 20:41:45,070     Epoch 10/60 | Loss: 0.3156
+2026-01-18 20:41:45,437      Test Accuracy: 0.8810, AUC: 0.9906
+2026-01-18 20:41:45,437            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:43:55,021  Epoch 11. Training Loss: 0.3022
+2026-01-18 20:43:55,022     Epoch 11/60 | Loss: 0.3022
+2026-01-18 20:43:55,397      Test Accuracy: 0.8720, AUC: 0.9909
+2026-01-18 20:43:55,398            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:46:04,941  Epoch 12. Training Loss: 0.3052
+2026-01-18 20:46:04,942     Epoch 12/60 | Loss: 0.3052
+2026-01-18 20:46:05,317      Test Accuracy: 0.8550, AUC: 0.9885
+2026-01-18 20:46:05,317            Best ACC: 0.8830, Corresponding AUC: 0.9854
+2026-01-18 20:48:15,039  Epoch 13. Training Loss: 0.2805
+2026-01-18 20:48:15,039     Epoch 13/60 | Loss: 0.2805
+2026-01-18 20:48:15,404  ---- New best accuracy achieved! ---- 
+2026-01-18 20:48:15,405      Test Accuracy: 0.8850, AUC: 0.9944
+2026-01-18 20:48:15,405            Best ACC: 0.8850, Corresponding AUC: 0.9944
+2026-01-18 20:50:24,896  Epoch 14. Training Loss: 0.2836
+2026-01-18 20:50:24,897     Epoch 14/60 | Loss: 0.2836
+2026-01-18 20:50:25,264      Test Accuracy: 0.8500, AUC: 0.9926
+2026-01-18 20:50:25,264            Best ACC: 0.8850, Corresponding AUC: 0.9944
+2026-01-18 20:52:35,136  Epoch 15. Training Loss: 0.2739
+2026-01-18 20:52:35,137     Epoch 15/60 | Loss: 0.2739
+2026-01-18 20:52:35,503      Test Accuracy: 0.8730, AUC: 0.9949
+2026-01-18 20:52:35,504            Best ACC: 0.8850, Corresponding AUC: 0.9944
+2026-01-18 20:54:43,617  Epoch 16. Training Loss: 0.2816
+2026-01-18 20:54:43,617     Epoch 16/60 | Loss: 0.2816
+2026-01-18 20:54:43,983  ---- New best accuracy achieved! ---- 
+2026-01-18 20:54:43,983      Test Accuracy: 0.8860, AUC: 0.9934
+2026-01-18 20:54:43,983            Best ACC: 0.8860, Corresponding AUC: 0.9934
+2026-01-18 20:56:52,182  Epoch 17. Training Loss: 0.2966
+2026-01-18 20:56:52,182     Epoch 17/60 | Loss: 0.2966
+2026-01-18 20:56:52,548      Test Accuracy: 0.8640, AUC: 0.9927
+2026-01-18 20:56:52,548            Best ACC: 0.8860, Corresponding AUC: 0.9934
+2026-01-18 20:59:00,553  Epoch 18. Training Loss: 0.2706
+2026-01-18 20:59:00,553     Epoch 18/60 | Loss: 0.2706
+2026-01-18 20:59:00,924  ---- New best accuracy achieved! ---- 
+2026-01-18 20:59:00,924      Test Accuracy: 0.9060, AUC: 0.9945
+2026-01-18 20:59:00,924            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:01:09,433  Epoch 19. Training Loss: 0.2757
+2026-01-18 21:01:09,433     Epoch 19/60 | Loss: 0.2757
+2026-01-18 21:01:09,797      Test Accuracy: 0.8890, AUC: 0.9931
+2026-01-18 21:01:09,797            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:03:18,329  Epoch 20. Training Loss: 0.2810
+2026-01-18 21:03:18,330     Epoch 20/60 | Loss: 0.2810
+2026-01-18 21:03:18,696      Test Accuracy: 0.8810, AUC: 0.9945
+2026-01-18 21:03:18,696            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:05:26,757  Epoch 21. Training Loss: 0.2710
+2026-01-18 21:05:26,757     Epoch 21/60 | Loss: 0.2710
+2026-01-18 21:05:27,121      Test Accuracy: 0.8710, AUC: 0.9915
+2026-01-18 21:05:27,121            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:07:35,756  Epoch 22. Training Loss: 0.2783
+2026-01-18 21:07:35,757     Epoch 22/60 | Loss: 0.2783
+2026-01-18 21:07:36,123      Test Accuracy: 0.8180, AUC: 0.9848
+2026-01-18 21:07:36,123            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:09:44,317  Epoch 23. Training Loss: 0.2824
+2026-01-18 21:09:44,317     Epoch 23/60 | Loss: 0.2824
+2026-01-18 21:09:44,694      Test Accuracy: 0.9030, AUC: 0.9934
+2026-01-18 21:09:44,694            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:11:52,909  Epoch 24. Training Loss: 0.2758
+2026-01-18 21:11:52,909     Epoch 24/60 | Loss: 0.2758
+2026-01-18 21:11:53,275      Test Accuracy: 0.8750, AUC: 0.9928
+2026-01-18 21:11:53,275            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:14:01,785  Epoch 25. Training Loss: 0.2623
+2026-01-18 21:14:01,786     Epoch 25/60 | Loss: 0.2623
+2026-01-18 21:14:02,150      Test Accuracy: 0.8780, AUC: 0.9913
+2026-01-18 21:14:02,150            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:16:10,370  Epoch 26. Training Loss: 0.2724
+2026-01-18 21:16:10,370     Epoch 26/60 | Loss: 0.2724
+2026-01-18 21:16:10,743      Test Accuracy: 0.9030, AUC: 0.9939
+2026-01-18 21:16:10,743            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:18:18,769  Epoch 27. Training Loss: 0.2755
+2026-01-18 21:18:18,769     Epoch 27/60 | Loss: 0.2755
+2026-01-18 21:18:19,136      Test Accuracy: 0.9000, AUC: 0.9943
+2026-01-18 21:18:19,136            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:20:27,147  Epoch 28. Training Loss: 0.2575
+2026-01-18 21:20:27,147     Epoch 28/60 | Loss: 0.2575
+2026-01-18 21:20:27,512      Test Accuracy: 0.8840, AUC: 0.9942
+2026-01-18 21:20:27,512            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:22:35,704  Epoch 29. Training Loss: 0.2497
+2026-01-18 21:22:35,704     Epoch 29/60 | Loss: 0.2497
+2026-01-18 21:22:36,079      Test Accuracy: 0.8710, AUC: 0.9909
+2026-01-18 21:22:36,079            Best ACC: 0.9060, Corresponding AUC: 0.9945
+2026-01-18 21:24:44,228  Epoch 30. Training Loss: 0.2654
+2026-01-18 21:24:44,228     Epoch 30/60 | Loss: 0.2654
+2026-01-18 21:24:44,597  ---- New best accuracy achieved! ---- 
+2026-01-18 21:24:44,597      Test Accuracy: 0.9090, AUC: 0.9941
+2026-01-18 21:24:44,597            Best ACC: 0.9090, Corresponding AUC: 0.9941
+2026-01-18 21:26:53,101  Epoch 31. Training Loss: 0.2563
+2026-01-18 21:26:53,101     Epoch 31/60 | Loss: 0.2563
+2026-01-18 21:26:53,467      Test Accuracy: 0.8960, AUC: 0.9936
+2026-01-18 21:26:53,468            Best ACC: 0.9090, Corresponding AUC: 0.9941
+2026-01-18 21:29:01,567  Epoch 32. Training Loss: 0.2616
+2026-01-18 21:29:01,568     Epoch 32/60 | Loss: 0.2616
+2026-01-18 21:29:01,934      Test Accuracy: 0.8700, AUC: 0.9922
+2026-01-18 21:29:01,934            Best ACC: 0.9090, Corresponding AUC: 0.9941
+2026-01-18 21:31:10,168  Epoch 33. Training Loss: 0.2540
+2026-01-18 21:31:10,168     Epoch 33/60 | Loss: 0.2540
+2026-01-18 21:31:10,536      Test Accuracy: 0.8990, AUC: 0.9943
+2026-01-18 21:31:10,536            Best ACC: 0.9090, Corresponding AUC: 0.9941
+2026-01-18 21:33:18,866  Epoch 34. Training Loss: 0.2397
+2026-01-18 21:33:18,866     Epoch 34/60 | Loss: 0.2397
+2026-01-18 21:33:19,234  ---- New best accuracy achieved! ---- 
+2026-01-18 21:33:19,234      Test Accuracy: 0.9180, AUC: 0.9945
+2026-01-18 21:33:19,234            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:35:27,269  Epoch 35. Training Loss: 0.2506
+2026-01-18 21:35:27,269     Epoch 35/60 | Loss: 0.2506
+2026-01-18 21:35:27,635      Test Accuracy: 0.8880, AUC: 0.9940
+2026-01-18 21:35:27,635            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:37:35,589  Epoch 36. Training Loss: 0.2565
+2026-01-18 21:37:35,589     Epoch 36/60 | Loss: 0.2565
+2026-01-18 21:37:35,956      Test Accuracy: 0.9000, AUC: 0.9924
+2026-01-18 21:37:35,956            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:39:45,246  Epoch 37. Training Loss: 0.2326
+2026-01-18 21:39:45,247     Epoch 37/60 | Loss: 0.2326
+2026-01-18 21:39:45,640      Test Accuracy: 0.8970, AUC: 0.9913
+2026-01-18 21:39:45,640            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:41:54,024  Epoch 38. Training Loss: 0.2432
+2026-01-18 21:41:54,024     Epoch 38/60 | Loss: 0.2432
+2026-01-18 21:41:54,390      Test Accuracy: 0.8950, AUC: 0.9927
+2026-01-18 21:41:54,390            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:44:02,397  Epoch 39. Training Loss: 0.2395
+2026-01-18 21:44:02,397     Epoch 39/60 | Loss: 0.2395
+2026-01-18 21:44:02,771      Test Accuracy: 0.9070, AUC: 0.9948
+2026-01-18 21:44:02,771            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:46:10,781  Epoch 40. Training Loss: 0.2392
+2026-01-18 21:46:10,782     Epoch 40/60 | Loss: 0.2392
+2026-01-18 21:46:11,147      Test Accuracy: 0.9110, AUC: 0.9935
+2026-01-18 21:46:11,147            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:48:19,210  Epoch 41. Training Loss: 0.2390
+2026-01-18 21:48:19,210     Epoch 41/60 | Loss: 0.2390
+2026-01-18 21:48:19,574      Test Accuracy: 0.8940, AUC: 0.9938
+2026-01-18 21:48:19,574            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:50:27,741  Epoch 42. Training Loss: 0.2550
+2026-01-18 21:50:27,741     Epoch 42/60 | Loss: 0.2550
+2026-01-18 21:50:28,107      Test Accuracy: 0.8830, AUC: 0.9911
+2026-01-18 21:50:28,107            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:52:36,231  Epoch 43. Training Loss: 0.2315
+2026-01-18 21:52:36,231     Epoch 43/60 | Loss: 0.2315
+2026-01-18 21:52:36,609      Test Accuracy: 0.8950, AUC: 0.9924
+2026-01-18 21:52:36,609            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:54:44,762  Epoch 44. Training Loss: 0.2327
+2026-01-18 21:54:44,763     Epoch 44/60 | Loss: 0.2327
+2026-01-18 21:54:45,128      Test Accuracy: 0.9130, AUC: 0.9937
+2026-01-18 21:54:45,128            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:56:53,417  Epoch 45. Training Loss: 0.2296
+2026-01-18 21:56:53,417     Epoch 45/60 | Loss: 0.2296
+2026-01-18 21:56:53,779      Test Accuracy: 0.9080, AUC: 0.9942
+2026-01-18 21:56:53,780            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 21:59:01,833  Epoch 46. Training Loss: 0.2177
+2026-01-18 21:59:01,833     Epoch 46/60 | Loss: 0.2177
+2026-01-18 21:59:02,197      Test Accuracy: 0.8970, AUC: 0.9932
+2026-01-18 21:59:02,197            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:01:10,372  Epoch 47. Training Loss: 0.2402
+2026-01-18 22:01:10,372     Epoch 47/60 | Loss: 0.2402
+2026-01-18 22:01:10,750      Test Accuracy: 0.8980, AUC: 0.9934
+2026-01-18 22:01:10,750            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:03:19,013  Epoch 48. Training Loss: 0.2380
+2026-01-18 22:03:19,013     Epoch 48/60 | Loss: 0.2380
+2026-01-18 22:03:19,377      Test Accuracy: 0.9020, AUC: 0.9926
+2026-01-18 22:03:19,377            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:05:27,470  Epoch 49. Training Loss: 0.2283
+2026-01-18 22:05:27,470     Epoch 49/60 | Loss: 0.2283
+2026-01-18 22:05:27,844      Test Accuracy: 0.9040, AUC: 0.9931
+2026-01-18 22:05:27,844            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:07:35,944  Epoch 50. Training Loss: 0.2416
+2026-01-18 22:07:35,944     Epoch 50/60 | Loss: 0.2416
+2026-01-18 22:07:36,315      Test Accuracy: 0.9050, AUC: 0.9938
+2026-01-18 22:07:36,315            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:09:44,286  Epoch 51. Training Loss: 0.2334
+2026-01-18 22:09:44,287     Epoch 51/60 | Loss: 0.2334
+2026-01-18 22:09:44,661      Test Accuracy: 0.8910, AUC: 0.9922
+2026-01-18 22:09:44,661            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:11:52,882  Epoch 52. Training Loss: 0.2431
+2026-01-18 22:11:52,882     Epoch 52/60 | Loss: 0.2431
+2026-01-18 22:11:53,249      Test Accuracy: 0.9000, AUC: 0.9932
+2026-01-18 22:11:53,249            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:14:02,339  Epoch 53. Training Loss: 0.2178
+2026-01-18 22:14:02,339     Epoch 53/60 | Loss: 0.2178
+2026-01-18 22:14:02,717      Test Accuracy: 0.8970, AUC: 0.9922
+2026-01-18 22:14:02,717            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:16:11,137  Epoch 54. Training Loss: 0.2299
+2026-01-18 22:16:11,138     Epoch 54/60 | Loss: 0.2299
+2026-01-18 22:16:11,510      Test Accuracy: 0.9050, AUC: 0.9929
+2026-01-18 22:16:11,511            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:18:19,718  Epoch 55. Training Loss: 0.2244
+2026-01-18 22:18:19,718     Epoch 55/60 | Loss: 0.2244
+2026-01-18 22:18:20,087      Test Accuracy: 0.9040, AUC: 0.9932
+2026-01-18 22:18:20,087            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:20:28,444  Epoch 56. Training Loss: 0.2246
+2026-01-18 22:20:28,445     Epoch 56/60 | Loss: 0.2246
+2026-01-18 22:20:28,821      Test Accuracy: 0.9000, AUC: 0.9922
+2026-01-18 22:20:28,821            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:22:36,953  Epoch 57. Training Loss: 0.2343
+2026-01-18 22:22:36,953     Epoch 57/60 | Loss: 0.2343
+2026-01-18 22:22:37,319      Test Accuracy: 0.9010, AUC: 0.9930
+2026-01-18 22:22:37,319            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:24:45,446  Epoch 58. Training Loss: 0.2256
+2026-01-18 22:24:45,447     Epoch 58/60 | Loss: 0.2256
+2026-01-18 22:24:45,812      Test Accuracy: 0.8980, AUC: 0.9931
+2026-01-18 22:24:45,812            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:26:53,894  Epoch 59. Training Loss: 0.2222
+2026-01-18 22:26:53,894     Epoch 59/60 | Loss: 0.2222
+2026-01-18 22:26:54,259      Test Accuracy: 0.9000, AUC: 0.9924
+2026-01-18 22:26:54,259            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:29:02,286  Epoch 60. Training Loss: 0.2257
+2026-01-18 22:29:02,286     Epoch 60/60 | Loss: 0.2257
+2026-01-18 22:29:02,649      Test Accuracy: 0.9020, AUC: 0.9930
+2026-01-18 22:29:02,649            Best ACC: 0.9180, Corresponding AUC: 0.9945
+2026-01-18 22:29:02,650  Finished Training. Best: ACC=0.9180, corresponding AUC=0.9945.
+2026-01-18 22:29:02,651  Experiment done! 

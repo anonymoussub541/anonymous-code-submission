@@ -1,0 +1,743 @@
+Run Name     : run1
+CUDA Devices : 0
+Config Dir   : /home/project/exps_nad/fds1
+Config Path  : ./run_config_osscode_gpt41idea.json
+Log Dir      : /home/project/exps_nad/fds1
+Batch Iterations   : 5
+Start Time   : 2026-01-26 01:53:39
+=============================
+Load config file!
+total_batch_iter_num:  5
+Using CUDA devices: 0
+run name:  run1
+Save directory: /home/project/exps_nad/
+Project name: fds1
+Code directory: /home/project/EvoTreeNAD/
+all generated model will be saved in:  /home/project/exps_nad/fds1/run1
+RESUME_EVOTREE:  True
+----use customized run config: ----
+{'evotree': {'iters_per_batch': 10, 'max_parent_len': 1, 'max_parent_len_ideagen': 2, 'rollout_attempts': 1, 'add_noise': True, 'add_noise_prob': 0.12, 'noise_range': 0.04, 'tol_ept_nodes': 4, 'nperci_top': 10, 'LIMIT_B': 0.016, 'EXTREME_LOW_PARA_THRESHOLD_B': 0.0001, 'TIMEOUT': 90, 'TAU_coef_4earlystop': 0.09, 'Patience_Evolution': 100}, 'adaptivewidth_config': {'WIDTH_D0': 16, 'WIDTH_D1': 9, 'WIDTH_best': 9, 'WIDTH_others': 7}, 'llm_api_pool': {'o3': {'modelname': 'o3', 'reasoning_effort': 'low'}, 'gpt5chat': {'modelname': 'gpt5chat'}, 'gpt4.1': {'modelname': 'gpt4.1'}, 'oss20': {'modelname': 'oss20'}}, 'idea_generation': {'APICALL_PROB_DICT_ideagen': {'gpt4.1': 1.0}, 'LLM_API_NAME_task_summary': 'o3', 'idea_generator_type': 'IdeaGenerationStrategy', 'idea_diversity_enhance': False, 'GENERATE_TASK_SPECIFIC_TRICK': True}, 'model_upgrade': {'APICALL_PROB_DICT_modelupgrade': {'oss20': 1.0}}, 'reward': {'Overwrite_verfun_final_new_file': True, 'EVALUATE_POTENTIAL_GAIN_FLAG': False, 'USE_WORTH_TESTING_FLAG': False, 'MODEL_SIZE_REWARD': 0.009}, 'data_config': {}, 'train_loop_config': {'lr': 0.0015, 'max_steps': 5000, 'total_talency_limit': 630, 'weight_decay': 1e-05, 'max_norm': 3.0, 'log_step': 500, 'eval_step': 500, 'scheduler_type': 'cosine', 'device': 'cuda', 'opt_type': 'adamw'}, 'initial_met_pair': [[500, 0.3], [1000, 0.4], [2000, 0.5]]}
+=====Load EvoTree parameters!=====
+TIMEOUT:  90
+Set up api agents!
+Run customize_code.py to load dataset and define train/eval function!
+Train data shape: torch.Size([84000, 3, 32, 32]), Train labels shape: torch.Size([84000])
+Test data shape: torch.Size([8000, 3, 32, 32]), Test labels shape: torch.Size([8000])
+Need to customize the config:
+EXPECT_METRIC_POINT:  0.8 LIMIT_METRIC 0.92 key_metrics_name:  eval_acc
+greater is better
+use the best one as best score
+init_paras_used:  {'label_num': 10, 'base_dim': 32, 'model_depth': 15}
+=====Finish all customized config!=====
+task_specific_instruction:  Note: no pretrain, no finetune, model will be trained from scratch. Must use model_depth to allocate main blocks/layers depth. 
+Init API agents!
+EXPECT_METRIC_POINT, LIMIT_METRIC:  0.8 0.92
+tau4earlystop:  0.0828
+Initialized LLM Client with model o3, deployment o3
+{'reasoning_effort': 'low', 'max_completion_tokens': 10000}
+Error initializing AzureOpenAI client: Missing credentials. Please pass one of `api_key`, `azure_ad_token`, `azure_ad_token_provider`, or the `AZURE_OPENAI_API_KEY` or `AZURE_OPENAI_AD_TOKEN` environment variables.; falling back to OpenAI client.
+Initialized LLM Client with model gpt5chat, deployment gpt-5-chat
+{'max_completion_tokens': 10000}
+Error initializing AzureOpenAI client: Missing credentials. Please pass one of `api_key`, `azure_ad_token`, `azure_ad_token_provider`, or the `AZURE_OPENAI_API_KEY` or `AZURE_OPENAI_AD_TOKEN` environment variables.; falling back to OpenAI client.
+Initialized LLM Client with model gpt4.1, deployment gpt-4.1
+{'max_completion_tokens': 10000}
+Initialized LLM Client with model oss20, deployment /models/gpt-oss-20b-mxfp4.gguf
+{'max_completion_tokens': 10000}
+use single llm:  ['oss20']
+use single llm:  ['gpt4.1']
+Load model requirements!
+
+==Going to generate task specific trick:
+OPENAIAPI----o3----286----906----Reason:64
+1. CORE TASK SUMMARY  
+- task type: image classification  
+- objective: predict categorical label from image  
+- label structure: 10 mutually-exclusive classes  
+- task details: train from scratch, depth governed by model_depth  
+
+2. DATA & INPUT SIGNALS  
+- modality: rgb image tensor  
+- shape: (batch, 3, 32, 32) normalized pixel values  
+- preprocessing: normalization already applied  
+- variability factors: small 32×32 resolution  
+- data quality issues: modest dataset (~50k) may overfit  
+
+3. HYPERPARAMETER CONCERNS  
+- batch regime: small-to-mid suggested (dataset 50k)  
+- constraints: tune model_depth, base_dim to manage capacity  
+- sample-shape hyperparameters: model_depth ~15–18 main blocks  
+
+4. SIMILAR TASKS & DOMAINS  
+- related archetypes: cifar-like image classification  
+- adjacent domains: small-scale vision benchmarks
+OPENAIAPI----o3----1100----1178----Reason:64
+### Related Works & Some Model Design Reference  
+**(Not exhaustive; use as a launch-pad)**  
+Inspire, borrow, extend, and invent your own architectural styles
+
+• Related Works (illustrative)  
+  – Classic ConvNets: VGG, ResNet, WideResNet, DenseNet  
+  – Lightweight ConvNets: MobileNet, ShuffleNet, EfficientNet  
+  – Regularization-centric: DropBlockNets, Shake-Shake, PyramidNet  
+  – Attention-augmented CNNs: Squeeze-Excite, CBAM, CoordAtt  
+  – Hybrid Token-CNN: ConvMixer, PatchConv, LocalViT  
+  – Pure Token: ViT, DeiT, CaiT  
+  – Token-CNN Bridges: CMT, PVT, NesT  
+  – Automatic Search: NASNet, AmoebaNet, ProxylessNAS  
+  – Scale-agnostic Pyramids: FPN, HRNet, BiFPN  
+  – Recurrent & Recursive: RCNN, RNN-Conv hybrids, ConvRNN  
+  – Graph-based: GCN-Vision, Dynamic-Graph CNN  
+  – MoE Vision: CondConv, Switch-Transformers  
+
+• Some task-related Design Elements / Concept / Paradigm (illustrative, not exhaustive)  
+  – Kernel variants: 3×3, 5×5, 7×7, depthwise, pointwise, group  
+  – Expansion tricks: inverted bottleneck, squeeze-expand, Ghost  
+  – Downsampling: stride-2 conv, max-pool, avg-pool, blur-pool  
+  – Multi-scale branches: split-scale, Inception-style, fractal  
+  – Dilation spectrum: 1,2,3, atrous pyramid  
+  – Channel mixing: 1×1 conv, linear token mix, MLP-mixing  
+  – Spatial mixing: conv, self-attn, local-attn, shift, circulant  
+  – Positional cues: fixed sin-cos, learnable pos-emb, coord-conv  
+  – Attention flavors: SE-scalar, channel-spatial, axial, criss-cross  
+  – Tokenization: patchify, pixel-shuffle, learned embed tokens  
+  – Aggregation heads: GAP-dense, classifier token, convolutional head  
+  – Residual topology: basic, bottleneck, pre-act, anti-alias  
+  – Skip density: plain, dense-connect, residual-in-residual, ladder  
+  – Normalizations: Batch, Layer, Group, EvoNorm, Filter-Response  
+  – Activation library: ReLU, Leaky, GELU, SiLU, Mish, PReLU  
+  – Stochastic depth: per-block drop, layer-scale, path-drop  
+  – Feature dropout: channel-drop, DropBlock, spatial-dropout  
+  – Input augment: RandAugment, CutMix, MixUp, Cutout  
+  – Representation mixing: manifold mixup, token mix, style mix  
+  – Intermediate supervision: aux-heads, deep stem logits  
+  – Loss couplings: label-smoothing, angular margin, focal, soft-target  
+  – Parameter sharing: recurrent block reuse, weight tying  
+  – Adaptive routing: gating, conditional conv, dynamic-width  
+  – Width scaling: base_dim sweep, stage-wise width multiplier  
+  – Depth scaling: repeat-count, compound scaling, nested repeats  
+  – Micro search cells: NAS-cell, shuffle-cell, darts-cell  
+  – Macro skeletons: stem-body-head, stage-pyramid, columnar  
+  – Anti-overfit tricks: early dropout, label jitter, mix-style  
+  – Weight regularizers: L2, orthogonal, spectral, weight decay  
+  – Quantization-ready: fused-BN, integer-friendly ops, shift-add  
+  – Memory savers: reversible blocks, checkpointing, group norm  
+  – Efficiency extras: fused-MBConv, SqueezeNext, partial-conv  
+  – Spatial bias add-ins: relative bias, coord-add, harmonic blocks  
+  – Feature grafting: cross-stage attention, global context blocks  
+  – Data-size aware: small-grid conv, stem stride-1, low-res tokens  
+  – Ensemble-in-one: multi-head logits, multi-classifier gating  
+  – Curriculum width: grow depth, progressive resizing, stage unfreeze  
+  – Graphical soft labels: class hierarchy, similarity embedding  
+  – Structural priors: symmetry tying, color channel grouping  
+  – Learnable pooling: GEM, Lp-pool, gated-pool  
+  – Head decoupling: class-specific batch norm, per-class routing  
+  – Post-classifier rectification: temperature scaling, logit adjust  
+
+
+----
+update the knowledge_idea, MODEL_DESIGN_SYSTEM_PROMPT_with_knowledge:
+There is verfun_final_new.py file, will overwrite it!
+/home/project/exps_nad/fds1/verfun_final_new.py already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/verfun_final_new.py!!!
+Need to customize the config:
+Not use model similarity for idea generation!
+Not use advanced model upgrade!
+add addnoise_bool_generator with 0.12 prob
+=======Begin EvoTree!=======
+EvoTree start from model0.py if exists, otherwise start from empty node!
+True
+None
+None
+max r is  None
+max r filename is  None
+No file to resume! Start from model0 or empty node!
+Start Node: Empty
+TIMELOG:EvoTree start time:  2026-01-26 01:54:07
+TIMELOG:prepare time used:  27.440198183059692
+Iteration Batch ------- 0 ------
+disable add noise
+itr   0
+=ideas_kk_used:  16   node.max_width:  16
+tokens_model:  None
+additional_context: 
+OPENAIAPI----gpt-4.1----3795----5410----Reason:0
+Idea generation: no further diversity enhancement
+/home/project/exps_nad/fds1/run1/empty_ideas.txt
+cid_output_list_input:  ['empty.py']
+OSS20API----3087----2269
+Sucessfully save /home/project/exps_nad/fds1/run1/model_1.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Standard 3x3 convo
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+/usr/local/lib/python3.12/dist-packages/torch/optim/lr_scheduler.py:240: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+{'step': 500, 'train_loss': 1.890138, 'eval_loss': 1.60057, 'eval_acc': 0.38912}
+{'step': 1000, 'train_loss': 1.555459, 'eval_loss': 1.4947, 'eval_acc': 0.47137}
+{'step': 1500, 'train_loss': 1.322221, 'eval_loss': 1.19787, 'eval_acc': 0.56475}
+{'step': 2000, 'train_loss': 1.176343, 'eval_loss': 1.23657, 'eval_acc': 0.58988}
+{'step': 2500, 'train_loss': 1.072065, 'eval_loss': 1.03095, 'eval_acc': 0.63313}
+{'step': 3000, 'train_loss': 0.976655, 'eval_loss': 0.89114, 'eval_acc': 0.6835}
+{'step': 3500, 'train_loss': 0.88085, 'eval_loss': 0.80841, 'eval_acc': 0.71288}
+{'step': 4000, 'train_loss': 0.810091, 'eval_loss': 0.76493, 'eval_acc': 0.73275}
+{'step': 4500, 'train_loss': 0.760547, 'eval_loss': 0.72496, 'eval_acc': 0.75025}
+{'step': 5000, 'train_loss': 0.702968, 'eval_loss': 0.69472, 'eval_acc': 0.76413}
+Finished 5000 update steps (2 epochs) in 3.9 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_1.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_1.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_1.txt!!!
+TIMELOG:time each attempt:  2026-01-26 01:59:39
+disable add noise
+itr   1
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2227----2186
+Sucessfully save /home/project/exps_nad/fds1/run1/model_2.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Standard Conv2d (3
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.742955, 'eval_loss': 1.70769, 'eval_acc': 0.3905}
+{'step': 1000, 'train_loss': 1.428486, 'eval_loss': 1.27898, 'eval_acc': 0.54375}
+{'step': 1500, 'train_loss': 1.242117, 'eval_loss': 1.13721, 'eval_acc': 0.594}
+{'step': 2000, 'train_loss': 1.09885, 'eval_loss': 1.06856, 'eval_acc': 0.61675}
+{'step': 2500, 'train_loss': 1.000624, 'eval_loss': 0.94846, 'eval_acc': 0.65625}
+{'step': 3000, 'train_loss': 0.924505, 'eval_loss': 0.8942, 'eval_acc': 0.68288}
+{'step': 3500, 'train_loss': 0.854509, 'eval_loss': 0.77025, 'eval_acc': 0.729}
+{'step': 4000, 'train_loss': 0.79621, 'eval_loss': 0.73609, 'eval_acc': 0.7335}
+{'step': 4500, 'train_loss': 0.747323, 'eval_loss': 0.69353, 'eval_acc': 0.75125}
+{'step': 5000, 'train_loss': 0.712883, 'eval_loss': 0.67959, 'eval_acc': 0.756}
+Finished 5000 update steps (2 epochs) in 3.5 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_2.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_2.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_2.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:03:28
+disable add noise
+itr   2
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----3841----2230
+Sucessfully save /home/project/exps_nad/fds1/run1/model_3.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Shallow convolutio
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.995809, 'eval_loss': 1.95327, 'eval_acc': 0.26038}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_3.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_3.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_3.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:04:54
+disable add noise
+itr   3
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2859----2180
+Sucessfully save /home/project/exps_nad/fds1/run1/model_4.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Shallow 5x5 convol
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.61092, 'eval_loss': 1.37575, 'eval_acc': 0.50325}
+{'step': 1000, 'train_loss': 1.192045, 'eval_loss': 1.0692, 'eval_acc': 0.61913}
+{'step': 1500, 'train_loss': 0.979476, 'eval_loss': 0.92146, 'eval_acc': 0.68563}
+{'step': 2000, 'train_loss': 0.871442, 'eval_loss': 0.73232, 'eval_acc': 0.73625}
+{'step': 2500, 'train_loss': 0.751622, 'eval_loss': 0.69939, 'eval_acc': 0.76013}
+{'step': 3000, 'train_loss': 0.649129, 'eval_loss': 0.61244, 'eval_acc': 0.79125}
+{'step': 3500, 'train_loss': 0.598872, 'eval_loss': 0.54081, 'eval_acc': 0.81375}
+{'step': 4000, 'train_loss': 0.543631, 'eval_loss': 0.52439, 'eval_acc': 0.82375}
+{'step': 4500, 'train_loss': 0.509365, 'eval_loss': 0.47704, 'eval_acc': 0.83375}
+{'step': 5000, 'train_loss': 0.477365, 'eval_loss': 0.47342, 'eval_acc': 0.84137}
+Finished 5000 update steps (2 epochs) in 4.4 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_4.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_4.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_4.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:09:46
+disable add noise
+itr   4
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----1870----2193
+Sucessfully save /home/project/exps_nad/fds1/run1/model_5.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Vanilla stem: Conv
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 2.101167, 'eval_loss': 1.97505, 'eval_acc': 0.21425}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_5.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_5.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_5.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:10:24
+disable add noise
+itr   5
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2873----2182
+Sucessfully save /home/project/exps_nad/fds1/run1/model_6.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Patchifying: Input
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 2.007879, 'eval_loss': 1.80125, 'eval_acc': 0.33563}
+{'step': 1000, 'train_loss': 1.803825, 'eval_loss': 1.69713, 'eval_acc': 0.36288}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_6.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_6.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_6.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:12:00
+disable add noise
+itr   6
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----3026----2191
+Sucessfully save /home/project/exps_nad/fds1/run1/model_7.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Double convolution
+error:  ['Sizes of tensors must match except in dimension 1. Expected size 32 but got size 34 for tensor number 2 in the list.']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_7.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_7.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_7.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_7.py']
+OSS20API----3561----3900
+Sucessfully save /home/project/exps_nad/fds1/run1/model_8.py!!!
+error:  ['Given groups=1, weight of size [22, 32, 3, 3], expected input[2, 64, 16, 16] to have 32 channels, but got 64 channels instead']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_8.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_8.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_8.txt!!!
+delete used idea due to no best score
+TIMELOG:time each attempt:  2026-01-26 02:13:06
+disable add noise
+itr   7
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----3516----2135
+Sucessfully save /home/project/exps_nad/fds1/run1/model_9.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Standard Conv2d (3
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.768151, 'eval_loss': 1.68017, 'eval_acc': 0.38438}
+{'step': 1000, 'train_loss': 1.415608, 'eval_loss': 1.36153, 'eval_acc': 0.51175}
+{'step': 1500, 'train_loss': 1.165788, 'eval_loss': 1.06616, 'eval_acc': 0.60813}
+{'step': 2000, 'train_loss': 0.997887, 'eval_loss': 0.99793, 'eval_acc': 0.63862}
+{'step': 2500, 'train_loss': 0.896923, 'eval_loss': 0.85772, 'eval_acc': 0.69963}
+{'step': 3000, 'train_loss': 0.768267, 'eval_loss': 0.71323, 'eval_acc': 0.75038}
+{'step': 3500, 'train_loss': 0.684477, 'eval_loss': 0.64149, 'eval_acc': 0.77463}
+{'step': 4000, 'train_loss': 0.652013, 'eval_loss': 0.60931, 'eval_acc': 0.78575}
+{'step': 4500, 'train_loss': 0.58316, 'eval_loss': 0.5702, 'eval_acc': 0.8015}
+{'step': 5000, 'train_loss': 0.570815, 'eval_loss': 0.54886, 'eval_acc': 0.80312}
+Finished 5000 update steps (2 epochs) in 5.0 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_9.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_9.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_9.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:18:37
+disable add noise
+itr   8
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----5791----2196
+Sucessfully save /home/project/exps_nad/fds1/run1/model_10.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Pixel-shuffle-base
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.889277, 'eval_loss': 1.76591, 'eval_acc': 0.32775}
+{'step': 1000, 'train_loss': 1.662778, 'eval_loss': 1.5257, 'eval_acc': 0.43512}
+{'step': 1500, 'train_loss': 1.543372, 'eval_loss': 1.40853, 'eval_acc': 0.4825}
+{'step': 2000, 'train_loss': 1.492479, 'eval_loss': 1.34679, 'eval_acc': 0.5105}
+{'step': 2500, 'train_loss': 1.405249, 'eval_loss': 1.30221, 'eval_acc': 0.51875}
+{'step': 3000, 'train_loss': 1.350167, 'eval_loss': 1.26659, 'eval_acc': 0.53263}
+{'step': 3500, 'train_loss': 1.308128, 'eval_loss': 1.20726, 'eval_acc': 0.55488}
+{'step': 4000, 'train_loss': 1.258325, 'eval_loss': 1.16492, 'eval_acc': 0.56912}
+{'step': 4500, 'train_loss': 1.235999, 'eval_loss': 1.14426, 'eval_acc': 0.5835}
+{'step': 5000, 'train_loss': 1.191819, 'eval_loss': 1.10718, 'eval_acc': 0.59713}
+Finished 5000 update steps (2 epochs) in 3.1 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_10.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_10.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_10.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:22:36
+disable add noise
+itr   9
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2848----2155
+Sucessfully save /home/project/exps_nad/fds1/run1/model_11.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Conv2d (3→base_dim
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.790927, 'eval_loss': 1.56643, 'eval_acc': 0.40863}
+{'step': 1000, 'train_loss': 1.495095, 'eval_loss': 1.38773, 'eval_acc': 0.4905}
+{'step': 1500, 'train_loss': 1.268757, 'eval_loss': 1.16415, 'eval_acc': 0.56788}
+{'step': 2000, 'train_loss': 1.10992, 'eval_loss': 1.02995, 'eval_acc': 0.62875}
+{'step': 2500, 'train_loss': 1.017117, 'eval_loss': 0.89461, 'eval_acc': 0.67637}
+{'step': 3000, 'train_loss': 0.916468, 'eval_loss': 0.80893, 'eval_acc': 0.70975}
+{'step': 3500, 'train_loss': 0.824924, 'eval_loss': 0.77382, 'eval_acc': 0.71962}
+{'step': 4000, 'train_loss': 0.784431, 'eval_loss': 0.72419, 'eval_acc': 0.74362}
+{'step': 4500, 'train_loss': 0.735776, 'eval_loss': 0.68703, 'eval_acc': 0.75538}
+{'step': 5000, 'train_loss': 0.688401, 'eval_loss': 0.6645, 'eval_acc': 0.7695}
+Finished 5000 update steps (2 epochs) in 4.8 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_11.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_11.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_11.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:27:49
+Finish 10 iterations!!
+TIMELOG:time used for iterations so far:  2022.4063959121704
+TIMELOG:time at iteractions  2026-01-26 02:27:49
+12
+all node statistics saved!
+main trajectory saved!
+12
+best_value_node_id_noleaf_include_node_best_rewards:  True
+best_value_node_id_include_node_best_rewards:  False
+-----reward----
+best reward node id:  /home/project/exps_nad/fds1/run1/model_4.py
+its score: 0.84137
+0.84137
+/home/project/exps_nad/fds1/run1/model_4.py
+new best model id:  4
+{'/home/project/exps_nad/fds1/run1/model_4.py': 0.674172301586512, '/home/project/exps_nad/fds1/run1/model_9.py': 0.520926975930591, '/home/project/exps_nad/fds1/run1/model_11.py': 0.3835380975195849, '/home/project/exps_nad/fds1/run1/model_1.py': 0.3481759341590041, '/home/project/exps_nad/fds1/run1/model_2.py': 0.333328535022968}
+best_value_node_id_noleaf_include_node_best_rewards:  True
+best_value_node_id_include_node_best_rewards:  False
+-----reward----
+best reward node id:  /home/project/exps_nad/fds1/run1/model_4.py
+its score: 0.84137
+best_node: /home/project/exps_nad/fds1/run1/model_4.py  reward:  0.84137 depth:  1
+Update strict early stop function!
+11
+max length of metrics 10
+6
+[500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+[[1000, 0.38857], [1500, 0.48195], [2000, 0.50708], [2500, 0.59173], [3000, 0.6421], [3500, 0.67148], [4000, 0.71205]]
+new met_pair:  [[1000, 0.4], [1500, 0.48195], [2000, 0.50708], [2500, 0.59173], [3000, 0.6421], [3500, 0.67148], [4000, 0.71205], [500, 0.3]]
+Iteration Batch ------- 1 ------
+disable add noise
+itr   0
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----4812----2144
+Sucessfully save /home/project/exps_nad/fds1/run1/model_12.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Standard convoluti
+error:  ['Given groups=1, weight of size [64, 64, 3, 3], expected input[2, 32, 32, 32] to have 64 channels, but got 32 channels instead']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_12.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_12.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_12.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_12.py']
+OSS20API----4431----3362
+Sucessfully save /home/project/exps_nad/fds1/run1/model_13.py!!!
+error:  ['The size of tensor a (16) must match the size of tensor b (32) at non-singleton dimension 3']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_13.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_13.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_13.txt!!!
+delete used idea due to no best score
+TIMELOG:time each attempt:  2026-01-26 02:29:13
+disable add noise
+itr   1
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2639----2141
+Sucessfully save /home/project/exps_nad/fds1/run1/model_14.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Gated 3×3 convolut
+error:  ['The model has 0.05M parameters. The model has extremely few parameters, might lead to underfitting issues or unfair performance for the architecture evaluation! Please adjust internal design arguments, such as scaling factors, intermediate dimensions, expansion ratio, or growth rates, to create a more reasonable architecture, or drop efficient-priority mechanisms/components (e.g., set conv without groups.). Note: Do not modify any user-specified initialization parameters. You have room to pursue the performance. Do not increase the model size dramatically, just moderately increase some ratios, scaling, or module configurations, or remove some efficiency-focused components.']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_14.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_14.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_14.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_14.py']
+OSS20API----2270----3598
+Sucessfully save /home/project/exps_nad/fds1/run1/model_15.py!!!
+error:  ['The model has 0.09M parameters. The model has extremely few parameters, might lead to underfitting issues or unfair performance for the architecture evaluation! Please adjust internal design arguments, such as scaling factors, intermediate dimensions, expansion ratio, or growth rates, to create a more reasonable architecture, or drop efficient-priority mechanisms/components (e.g., set conv without groups.). Note: Do not modify any user-specified initialization parameters. You have room to pursue the performance. Do not increase the model size dramatically, just moderately increase some ratios, scaling, or module configurations, or remove some efficiency-focused components.']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_15.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_15.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_15.txt!!!
+delete used idea due to no best score
+TIMELOG:time each attempt:  2026-01-26 02:29:59
+disable add noise
+itr   2
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2728----2123
+Sucessfully save /home/project/exps_nad/fds1/run1/model_16.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Sinusoidal positio
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.944981, 'eval_loss': 1.81907, 'eval_acc': 0.31838}
+{'step': 1000, 'train_loss': 1.76416, 'eval_loss': 1.65167, 'eval_acc': 0.37175}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_16.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_16.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_16.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:30:49
+disable add noise
+itr   3
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2093----2136
+Sucessfully save /home/project/exps_nad/fds1/run1/model_17.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Shallow conv stem 
+error:  ['Given groups=1, weight of size [32, 32, 3], expected input[2, 1024, 32] to have 32 channels, but got 1024 channels instead']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_17.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_17.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_17.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_17.py']
+OSS20API----6632----3583
+Sucessfully save /home/project/exps_nad/fds1/run1/model_18.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.91048, 'eval_loss': 1.75372, 'eval_acc': 0.34225}
+{'step': 1000, 'train_loss': 1.592445, 'eval_loss': 1.54903, 'eval_acc': 0.4305}
+{'step': 1500, 'train_loss': 1.39818, 'eval_loss': 1.30199, 'eval_acc': 0.53038}
+{'step': 2000, 'train_loss': 1.291652, 'eval_loss': 1.20046, 'eval_acc': 0.55888}
+{'step': 2500, 'train_loss': 1.171585, 'eval_loss': 1.09828, 'eval_acc': 0.6065}
+{'step': 3000, 'train_loss': 1.078583, 'eval_loss': 1.01695, 'eval_acc': 0.63162}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_18.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_18.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_18.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:33:55
+disable add noise
+itr   4
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----3687----2175
+Sucessfully save /home/project/exps_nad/fds1/run1/model_19.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Anti-aliased convo
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 2.20402, 'eval_loss': 2.06089, 'eval_acc': 0.212}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_19.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_19.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_19.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:34:51
+disable add noise
+itr   5
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----2872----2161
+Sucessfully save /home/project/exps_nad/fds1/run1/model_20.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Stem: Conv2d (kern
+error:  ['Given groups=1, weight of size [64, 32, 3, 3], expected input[2, 64, 8, 8] to have 32 channels, but got 64 channels instead']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_20.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_20.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_20.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_20.py']
+OSS20API----6424----3516
+Sucessfully save /home/project/exps_nad/fds1/run1/model_21.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 2.177589, 'eval_loss': 2.123, 'eval_acc': 0.20012}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_21.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_21.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_21.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:36:51
+disable add noise
+itr   6
+=ideas_kk_used:  16   node.max_width:  16
+tokens_model:  None
+additional_context: 
+OPENAIAPI----gpt-4.1----3953----9031----Reason:0
+Idea generation: no further diversity enhancement
+/home/project/exps_nad/fds1/run1/empty_ideas.txt
+cid_output_list_input:  ['empty.py']
+OSS20API----4841----2236
+Sucessfully save /home/project/exps_nad/fds1/run1/model_22.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Standard 3x3 convo
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.767909, 'eval_loss': 1.52259, 'eval_acc': 0.43612}
+{'step': 1000, 'train_loss': 1.519894, 'eval_loss': 1.37718, 'eval_acc': 0.49862}
+{'step': 1500, 'train_loss': 1.36971, 'eval_loss': 1.25768, 'eval_acc': 0.53612}
+{'step': 2000, 'train_loss': 1.259447, 'eval_loss': 1.2171, 'eval_acc': 0.5565}
+{'step': 2500, 'train_loss': 1.189389, 'eval_loss': 1.07489, 'eval_acc': 0.60262}
+{'step': 3000, 'train_loss': 1.116366, 'eval_loss': 1.02996, 'eval_acc': 0.631}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_22.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_22.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_22.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:41:02
+itr   7
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----3470----2217
+Sucessfully save /home/project/exps_nad/fds1/run1/model_23.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Pre-stem: learnabl
+error:  ['Expected p_in >= 0 && p_in <= 1 to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_23.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_23.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_23.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_23.py']
+OSS20API----3610----4204
+Sucessfully save /home/project/exps_nad/fds1/run1/model_24.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 2.333453, 'eval_loss': 2.5527473890364333e+25, 'eval_acc': 0.0995}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_24.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_24.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_24.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:42:35
+disable add noise
+itr   8
+=ideas_kk_used:  16   node.max_width:  16
+cid_output_list_input:  ['empty.py']
+OSS20API----5041----2200
+Sucessfully save /home/project/exps_nad/fds1/run1/model_25.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'New Design (from scratch)', 'Input Processing': 'Initial Conv2d (3→
+Import failed: invalid syntax (model_25.py, line 189)
+fail verification.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_25.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_25.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_25.txt!!!
+-Rollout: cid_output_list_input:  ['empty.py', 'model_25.py']
+OSS20API----2659----3960
+Sucessfully save /home/project/exps_nad/fds1/run1/model_26.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.933368, 'eval_loss': 1.70508, 'eval_acc': 0.40187}
+{'step': 1000, 'train_loss': 1.572172, 'eval_loss': 1.50193, 'eval_acc': 0.459}
+{'step': 1500, 'train_loss': 1.455704, 'eval_loss': 1.42757, 'eval_acc': 0.48225}
+{'step': 2000, 'train_loss': 1.371602, 'eval_loss': 1.27021, 'eval_acc': 0.547}
+{'step': 2500, 'train_loss': 1.271398, 'eval_loss': 1.33687, 'eval_acc': 0.53025}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_26.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_26.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_26.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:44:59
+disable add noise
+itr   9
+=ideas_kk_used:  9   node.max_width:  9
+tokens_model:  -1141
+additional_context: 
+OPENAIAPI----gpt-4.1----2203----7154----Reason:0
+Idea generation: no further diversity enhancement
+/home/project/exps_nad/fds1/run1/model_4_ideas.txt
+cid_output_list_input:  ['empty.py', 'model_4.py']
+OSS20API----4440----3934
+Sucessfully save /home/project/exps_nad/fds1/run1/model_27.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'General Upgrade – Squeeze-and-Excitation Channel Attention in Each 
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+too many indices for tensor of dimension 2
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_27.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_27.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_27.txt!!!
+-Rollout: cid_output_list_input:  ['model_4.py', 'model_27.py']
+OSS20API----3810----5479
+Sucessfully save /home/project/exps_nad/fds1/run1/model_28.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.76174, 'eval_loss': 1.64424, 'eval_acc': 0.41675}
+{'step': 1000, 'train_loss': 1.37049, 'eval_loss': 1.3187, 'eval_acc': 0.54837}
+{'step': 1500, 'train_loss': 1.151182, 'eval_loss': 1.23011, 'eval_acc': 0.59237}
+{'step': 2000, 'train_loss': 1.016557, 'eval_loss': 1.05944, 'eval_acc': 0.64263}
+{'step': 2500, 'train_loss': 0.924523, 'eval_loss': 0.83915, 'eval_acc': 0.72137}
+{'step': 3000, 'train_loss': 0.814546, 'eval_loss': 0.75997, 'eval_acc': 0.7415}
+{'step': 3500, 'train_loss': 0.750095, 'eval_loss': 0.86862, 'eval_acc': 0.7325}
+{'step': 4000, 'train_loss': 0.712186, 'eval_loss': 0.75902, 'eval_acc': 0.75987}
+{'step': 4500, 'train_loss': 0.658987, 'eval_loss': 0.66373, 'eval_acc': 0.78063}
+{'step': 5000, 'train_loss': 0.622104, 'eval_loss': 0.59153, 'eval_acc': 0.799}
+Finished 5000 update steps (2 epochs) in 5.8 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_28.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_28.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_28.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:53:38
+Finish 10 iterations!!
+TIMELOG:time used for iterations so far:  3571.5134541988373
+TIMELOG:time at iteractions  2026-01-26 02:53:38
+29
+all node statistics saved!
+main trajectory saved!
+29
+best_value_node_id_noleaf_include_node_best_rewards:  False
+best_value_node_id_include_node_best_rewards:  False
+-----reward----
+best reward node id:  /home/project/exps_nad/fds1/run1/model_4.py
+its score: 0.84137
+0.84137
+/home/project/exps_nad/fds1/run1/model_4.py
+{'/home/project/exps_nad/fds1/run1/model_4.py': 0.674172301586512, '/home/project/exps_nad/fds1/run1/model_9.py': 0.520926975930591, '/home/project/exps_nad/fds1/run1/model_28.py': 0.4581122645219412, '/home/project/exps_nad/fds1/run1/model_11.py': 0.3835380975195849, '/home/project/exps_nad/fds1/run1/model_1.py': 0.3481759341590041}
+best_value_node_id_noleaf_include_node_best_rewards:  False
+best_value_node_id_include_node_best_rewards:  False
+-----reward----
+best reward node id:  /home/project/exps_nad/fds1/run1/model_4.py
+its score: 0.84137
+best_node: /home/project/exps_nad/fds1/run1/model_4.py  reward:  0.84137 depth:  1
+Update strict early stop function!
+28
+max length of metrics 10
+7
+[500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+[[1000, 0.4077], [1500, 0.48508000000000007], [2000, 0.54595], [2500, 0.63497], [3000, 0.66835], [3500, 0.67822], [4000, 0.7229199999999999]]
+new met_pair:  [[1000, 0.4077], [1500, 0.48508000000000007], [2000, 0.54595], [2500, 0.63497], [3000, 0.66835], [3500, 0.67822], [4000, 0.7229199999999999], [500, 0.3]]
+Iteration Batch ------- 2 ------
+disable add noise
+itr   0
+=ideas_kk_used:  9   node.max_width:  9
+cid_output_list_input:  ['empty.py', 'model_4.py']
+OSS20API----4505----3911
+Sucessfully save /home/project/exps_nad/fds1/run1/model_29.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'General Upgrade – Residual Dense Block Backbone for Enhanced Featur
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.871271, 'eval_loss': 1.77497, 'eval_acc': 0.36138}
+{'step': 1000, 'train_loss': 1.598745, 'eval_loss': 1.47535, 'eval_acc': 0.459}
+{'step': 1500, 'train_loss': 1.418573, 'eval_loss': 1.34086, 'eval_acc': 0.4975}
+{'step': 2000, 'train_loss': 1.231551, 'eval_loss': 1.15179, 'eval_acc': 0.58713}
+{'step': 2500, 'train_loss': 1.101796, 'eval_loss': 1.00617, 'eval_acc': 0.63375}
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_29.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_29.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_29.txt!!!
+TIMELOG:time each attempt:  2026-01-26 02:58:12
+disable add noise
+itr   1
+=ideas_kk_used:  9   node.max_width:  9
+cid_output_list_input:  ['empty.py', 'model_4.py']
+OSS20API----6462----3928
+Sucessfully save /home/project/exps_nad/fds1/run1/model_30.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'Exploratory Upgrade – Hybrid Conv-Attention Block: Swin-Lite Transf
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.596178, 'eval_loss': 1.26825, 'eval_acc': 0.553}
+{'step': 1000, 'train_loss': 1.198604, 'eval_loss': 1.03772, 'eval_acc': 0.62638}
+{'step': 1500, 'train_loss': 1.015284, 'eval_loss': 0.94506, 'eval_acc': 0.663}
+{'step': 2000, 'train_loss': 0.904536, 'eval_loss': 0.86362, 'eval_acc': 0.70362}
+{'step': 2500, 'train_loss': 0.802208, 'eval_loss': 0.70297, 'eval_acc': 0.75313}
+{'step': 3000, 'train_loss': 0.683615, 'eval_loss': 0.64574, 'eval_acc': 0.77387}
+{'step': 3500, 'train_loss': 0.637747, 'eval_loss': 0.56945, 'eval_acc': 0.80188}
+{'step': 4000, 'train_loss': 0.569171, 'eval_loss': 0.52839, 'eval_acc': 0.81725}
+{'step': 4500, 'train_loss': 0.546636, 'eval_loss': 0.49859, 'eval_acc': 0.83175}
+{'step': 5000, 'train_loss': 0.501704, 'eval_loss': 0.46789, 'eval_acc': 0.84037}
+Finished 5000 update steps (2 epochs) in 4.9 min.
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_30.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_30.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_30.txt!!!
+TIMELOG:time each attempt:  2026-01-26 03:04:06
+disable add noise
+itr   2
+=ideas_kk_used:  9   node.max_width:  9
+cid_output_list_input:  ['empty.py', 'model_4.py']
+OSS20API----5236----3895
+Sucessfully save /home/project/exps_nad/fds1/run1/model_31.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'Exploratory Upgrade – Multi-Scale Parallel Branches with Split Kern
+error:  ['The size of tensor a (32) must match the size of tensor b (64) at non-singleton dimension 1']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_31.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_31.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_31.txt!!!
+-Rollout: cid_output_list_input:  ['model_4.py', 'model_31.py']
+OSS20API----4973----5597
+Sucessfully save /home/project/exps_nad/fds1/run1/model_32.py!!!
+error:  ['The size of tensor a (16) must match the size of tensor b (32) at non-singleton dimension 3']
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_32.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_32.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_32.txt!!!
+delete used idea due to no best score
+TIMELOG:time each attempt:  2026-01-26 03:05:45
+disable add noise
+itr   3
+=ideas_kk_used:  9   node.max_width:  9
+cid_output_list_input:  ['empty.py', 'model_4.py']
+OSS20API----2034----3861
+Sucessfully save /home/project/exps_nad/fds1/run1/model_33.py!!!
+--depth:  0    used_idea:  {'Model Design / Modification': 'Exploratory Upgrade – Lightweight Global Context Block Injection in
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+too many indices for tensor of dimension 2
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_33.txt!!!
+/home/project/exps_nad/fds1/run1/evaloutput_model_33.txt already exists!!!
+Sucessfully save /home/project/exps_nad/fds1/run1/evaloutput_model_33.txt!!!
+-Rollout: cid_output_list_input:  ['model_4.py', 'model_33.py']
+OSS20API----5090----5328
+Sucessfully save /home/project/exps_nad/fds1/run1/model_34.py!!!
+pass verification. next, will conduct evaluation.
+opt type is  adamw
+{'step': 500, 'train_loss': 1.747746, 'eval_loss': 1.7852, 'eval_acc': 0.368}
+{'step': 1000, 'train_loss': 1.442394, 'eval_loss': 1.36682, 'eval_acc': 0.50025}
+{'step': 1500, 'train_loss': 1.276275, 'eval_loss': 1.1655, 'eval_acc': 0.57688}
+{'step': 2000, 'train_loss': 1.134328, 'eval_loss': 0.98201, 'eval_acc': 0.6415}
+{'step': 2500, 'train_loss': 1.014929, 'eval_loss': 0.87438, 'eval_acc': 0.6835}
+{'step': 3000, 'train_loss': 0.909131, 'eval_loss': 0.83206, 'eval_acc': 0.70737}
+Terminated
+=============================
+End Time     : 2026-01-26 03:10:45

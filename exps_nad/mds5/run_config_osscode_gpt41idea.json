@@ -1,0 +1,67 @@
+{
+  "evotree": {
+      "iters_per_batch": 10,
+      "max_parent_len": 1,
+      "max_parent_len_ideagen": 2,
+      "rollout_attempts": 1,
+      "add_noise": true,
+      "add_noise_prob": 0.12,
+      "noise_range": 0.04,
+      "tol_ept_nodes": 5,
+      "nperci_top": 10,
+      "LIMIT_B": 0.008,
+      "EXTREME_LOW_PARA_THRESHOLD_B": 0.0,
+    "TIMEOUT": 90,
+    "TAU_coef_4earlystop": 0.09,
+    "Patience_Evolution": 100
+  },
+  "adaptivewidth_config": {
+      "WIDTH_D0": 16,
+    "WIDTH_D1": 7,
+    "WIDTH_best": 7,
+    "WIDTH_others": 5
+  },
+  "llm_api_pool": {
+      "o3": {"modelname": "o3", "reasoning_effort": "low"},
+      "gpt5chat": {"modelname": "gpt5chat"},
+      "gpt4.1": {"modelname": "gpt4.1"},
+      "oss20": {"modelname": "oss20"}
+  },
+  "idea_generation": {
+      "APICALL_PROB_DICT_ideagen": {
+      "gpt4.1": 1.0
+    },
+    "LLM_API_NAME_task_summary": "o3",
+    "idea_generator_type": "IdeaGenerationStrategy",
+    "idea_diversity_enhance": false,
+    "GENERATE_TASK_SPECIFIC_TRICK": true
+  },
+  "model_upgrade":{
+      "APICALL_PROB_DICT_modelupgrade": {
+      "oss20": 1.0
+    }
+  },
+  "reward": {
+    "Overwrite_verfun_final_new_file": true,
+    "EVALUATE_POTENTIAL_GAIN_FLAG": false,
+    "USE_WORTH_TESTING_FLAG": false,
+    "MODEL_SIZE_REWARD": 0.009
+  },
+  "data_config":{
+  },
+  "train_loop_config": {
+    "lr": 0.0005, 
+    "max_steps": 1800,
+    "total_talency_limit": 300,
+    "weight_decay": 1e-5,
+    "max_norm": 3.0,
+    "log_step": 200,
+    "eval_step": 200,
+    "scheduler_type": "cosine",
+    "device": "cuda",
+    "opt_type": "adamw"
+  },
+  "initial_met_pair": [[200, 0.2], [400, 0.4], [600, 0.5]]
+}
+
+

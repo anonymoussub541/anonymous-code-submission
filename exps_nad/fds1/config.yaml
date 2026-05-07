@@ -1,0 +1,4 @@
+project:
+  name: fds1
+  SAVEDIR: /home/project/exps_nad/
+  CODEDIR: /home/project/EvoTreeNAD/
